@@ -1,0 +1,2 @@
+module EndUsers::TagsHelper
+end
