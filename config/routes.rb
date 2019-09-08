@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   get 'movies/search' => 'movies#title_search', as: 'title_search'
   get 'movies/movie_id/tags/tag_search' => 'movies#tag_search', as: 'tag_search'
 
-  resources :end_users, only: [:show, :edit, :destroy] do
+
+  resources :end_users, only: [:show, :edit, :destroy, :update] do
     resources :comments, only: [:create,:destroy]
     resources :favorites, only: [:create, :index, :destroy]
     resources :movies, only: [:new, :create, :edit, :destroy] do

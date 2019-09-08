@@ -1,0 +1,36 @@
+<div class="show-main">
+
+  <h1>My Page</h1>
+
+    <table class="user-info">
+
+      <tr>
+        <th colspan="2">My Info</th>
+      </tr>
+
+      <tr>
+        <td>Name:<%= @end_user.first_name+" "+@end_user.last_name %></td>
+        <td>Email: <%= @end_user.email %></td>
+      </tr>
+
+    </table>
+
+    <div>
+      <h2>My Posts</h2>
+    </div>
+
+    <div>
+      <h2>My Favorites</h2>
+    </div>
+
+    <div>
+      <h2>Account Edit</h2>
+    </div>
+
+    <div>
+      <%= link_to end_user_registration_path,method: :delete do %>
+      <h2>Delete Account</h2>
+      <%end%>
+    </div>
+
+</div>

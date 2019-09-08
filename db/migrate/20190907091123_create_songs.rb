@@ -7,6 +7,8 @@ class CreateSongs < ActiveRecord::Migration[5.2]
       t.datetime  :deleted_at
       t.timestamps
       t.timestamps
+
+      end
+        add_index :songs, :deleted_at
     end
   end
-end

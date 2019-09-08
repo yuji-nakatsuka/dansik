@@ -1,0 +1,44 @@
+<header>
+ <div class="container">
+   <nav>
+     <%= link_to root_path do%><div class="header-site-logo">
+       <h1>DANSIK</h1>
+     </div><%end%>
+
+<!-- ここからスタート -->
+     <div class="search_form">
+
+     </div>
+
+
+     <% if end_user_signed_in? %>
+       <ul class="nav navbar-nav navbar-right">
+         <li>
+           <%= link_to "ALL Movies", movies_path %>
+         </li>
+         <li>
+           <%= link_to "Create Post",  new_end_user_movie_path(current_end_user.id) %>
+         </li>
+         <li>
+           <%= link_to current_end_user.first_name+' '+current_end_user.last_name, end_user_path(current_end_user.id) %>
+         </li>
+         <li>
+           <%= link_to "Logout", destroy_end_user_session_path,method: :delete %>
+         </li>
+       </ul>
+     <% else %>
+       <ul class="nav navbar-nav navbar-right">
+         <li>
+           <%= link_to "ALL Movies", movies_path %>
+         </li>
+         <li>
+           <%= link_to "Login", new_end_user_session_path %>
+         </li>
+         <li>
+           <%= link_to "Sign Up", new_end_user_registration_path %>
+         </li>
+       </ul>
+     <% end %>
+   </nav>
+ </div>
+</header>

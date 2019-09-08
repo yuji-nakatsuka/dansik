@@ -7,6 +7,8 @@ class CreateMovies < ActiveRecord::Migration[5.2]
       t.integer  :end_user_id,null: false
       t.datetime :deleted_at
       t.timestamps
+      end
+
+      add_index :movies, :deleted_at
     end
   end
-end
