@@ -1,0 +1,44 @@
+<%= render "layouts/end_user_header"%>
+
+<h2>New Post</h2>
+
+<%= form_for @movie,url: end_user_movies_path do |f| %>
+
+  <div class="field">
+    <label>Title</label><br />
+    <%= f.text_field :title,autofocus: true %>
+  </div>
+
+    <div class="field">
+      <label>URL</label><br />
+      <%= f.text_field :url %>
+    </div>
+
+  <div class="songs">
+    <%= f.fields_for :songs do |song| %>
+
+  <%= render "song_fields", f: song %>
+
+    <% end %>
+
+    <div class="links">
+     <%= link_to_add_association "Song Add", f, :songs %>
+   </div>
+
+   <div class="tags">
+     <%= f.fields_for :tags do |tag| %>
+     <label>Tag</label><br />
+     
+   <%= render "tag_fields", f: tag %>
+
+     <% end %>
+
+     <div class="links">
+      <%= link_to_add_association "Tag Add", f, :tags %>
+    </div>
+
+
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+<% end %>

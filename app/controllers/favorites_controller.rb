@@ -1,4 +1,4 @@
-class EndUsers::FavoritesController < ApplicationController
+class FavoritesController < ApplicationController
 
   def destroy
   end

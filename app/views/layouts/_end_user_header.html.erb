@@ -1,7 +1,8 @@
 <header>
  <div class="container">
    <nav>
-     <%= link_to root_path do%><div class="header-site-logo">
+     <%= link_to root_path do%>
+     <div class="header-site-logo">
        <h1>DANSIK</h1>
      </div><%end%>
 
@@ -23,7 +24,7 @@
            <%= link_to current_end_user.first_name+' '+current_end_user.last_name, end_user_path(current_end_user.id) %>
          </li>
          <li>
-           <%= link_to "Logout", destroy_end_user_session_path,method: :delete %>
+           <%= link_to "Logout", destroy_end_user_session_path,method: :delete,data: {confirm: '本当にログアウトしますか？'} %>
          </li>
        </ul>
      <% else %>

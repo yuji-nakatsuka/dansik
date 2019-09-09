@@ -1,0 +1,80 @@
+
+<div class="container">
+  <div class="row">
+<%= render "layouts/end_user_header"%>
+  </div>
+
+  <div class="movie-show-main">
+
+    <div class="row">
+
+      <div class="movie-image col-lg-7 col-md-7">
+        <table class="movie-image-table">
+          <tr>
+            <td colspan="2"><h2><%= @movie.title %></h2></td>
+          </tr>
+          <tr>
+            <td colspan="2">サムネイル取得</td>
+          </tr>
+          <tr>
+            <td><i class="fa fa-heart-o"></i> Favorites</td>
+            <td>shared by <%= @movie.end_user.first_name+" "+@movie.end_user.last_name %></td>
+          </tr>
+
+        <% if current_end_user.id==@movie.end_user.id %>
+          <tr>
+          <td colspan="3"><%= link_to edit_end_user_movie_path(current_end_user.id,@movie.id)do%>
+            <span class="btn btn-success btn-block">Edit</span><%end%></td>
+          </tr>
+
+          <tr>
+            <td colspan="2"><%= link_to end_user_movie_path(current_end_user.id,@movie.id),method: :delete,data: {confirm: '本当に削除しますか？'} do%>
+              <span class="btn btn-danger btn-block">Delete</span><%end%></td>
+          </tr>
+        <% end %>
+
+        </table>
+      </div>
+
+      <div class="movie-songs col-lg-5 col-md-5">
+        <h2>Used Songs</h2>
+        <table class="movie-songs-table table table-striped">
+          <tr>
+            <th>Song Title</th>
+            <th>Artist</th>
+          </tr>
+        <% @movie.songs.each do |song| %>
+          <tr>
+            <td><%= song.song %></td>
+            <td><%= song.artist %></td>
+          </tr>
+          <%end%>
+        </table>
+      </div>
+        </div><!-- row -->
+
+    <div class="row">
+      <div class="movie-itunes col-lg-12 col-md-12">
+        <h2>Search from iTunes</h2>
+      </div>
+    </div><!-- row -->
+
+    <div class="row">
+      <div class="movie-youtube col-lg-12 col-md-12">
+        <h2>Search from YouTube</h2>
+      </div>
+    </div><!-- row -->
+
+    <div class="row">
+      <div class="movie-tags col-lg-12 col-md-12">
+        <h2>Tags</h2>
+          <p>
+          <% @movie.tags.each do |tag| %>
+              <%= link_to tag_search_path do%><%= tag.tag %><%end%>
+            <%end%>
+          </p>
+      </div>
+    </div><!-- row -->
+
+  </div><!-- movie-show-main -->
+</div><!-- container -->

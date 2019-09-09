@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :end_users, only: [:show, :edit, :destroy, :update] do
     resources :comments, only: [:create,:destroy]
     resources :favorites, only: [:create, :index, :destroy]
-    resources :movies, only: [:new, :create, :edit, :destroy] do
+    resources :movies, only: [:new, :create, :edit,:update, :destroy] do
         resources :favorites, only: [:destroy, :index, :create]
     end
   end
