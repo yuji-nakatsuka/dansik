@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
 
   GOOGLE_API_KEY = Rails.application.credentials.google[:api_key]
 
-    def find_videos(keyword, after: 1.months.ago, before: Time.now)
+    def find_videos(keyword)
       service = Google::Apis::YoutubeV3::YouTubeService.new
       service.key = GOOGLE_API_KEY
 
@@ -11,10 +11,8 @@ class MoviesController < ApplicationController
         q: keyword,
         type: 'video',
         max_results: 1,
-        order: :date,
+        order: :relevance,
         page_token: next_page_token,
-        published_after: after.iso8601,
-        published_before: before.iso8601
       }
       service.list_searches(:snippet, opt)
     end
@@ -25,8 +23,8 @@ class MoviesController < ApplicationController
 
   def show
     @movie=Movie.find(params[:id])
-    @movie.songs.each do |song|
     @youtube_search_videos = []
+    @movie.songs.each do |song|
     @youtube_search_videos << find_videos("#{song.song} #{song.artist}")
   end
   end
