@@ -70,7 +70,13 @@
           <% snippet = item.snippet %>
            <div class="youtube_search_video col-lg-4 col-md-4">
              <iframe width="300" height="200" src="https://www.youtube.com/embed/<%= item.id.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-             <p><%= snippet.title %></p>
+             <p>
+               <% if  snippet.title.include?("&quot;")%><!-- タイトルに空白があるかチェック -->
+               <%= snippet.title.gsub!(/&quot;/, ' ') %>
+               <%else%>
+               <%= snippet.title %>
+               <%end%>
+             </p>
            </div>
         <%end%>
 

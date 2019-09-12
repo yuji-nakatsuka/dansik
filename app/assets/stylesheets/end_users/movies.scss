@@ -19,10 +19,14 @@
   padding:5px;
 }
 
+.movie-index-table tr:last-child td:last-child {
+  padding-bottom: 10px;
+}
 
 .movie-image {
   width:100%;
   border:1px solid black;
+  padding-bottom: 20px;
 }
 
 .movie-image-table {
@@ -39,8 +43,20 @@
   text-align: center;
 }
 
+.movie-itunes {
+  margin-top:15px;
+}
+
 .movie-songs,.movie-itunes,.movie-youtube,.movie-tags {
   width:100%;
   border:1px solid black;
   margin-bottom:10px;
+}
+
+.thumbnail {
+  width:300px
+}
+
+.thumbnail:hover {
+  opacity:0.5
 }
