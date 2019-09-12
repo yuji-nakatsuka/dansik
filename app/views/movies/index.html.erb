@@ -15,7 +15,9 @@
             <td colspan="2"><h2><%= movie.title %></h2></td>
           </tr>
           <tr>
-            <td><i class="fa fa-heart-o"></i> Favorites</td>
+            <% if @post_image.favorited_by?(current_end_user) %>
+            <%= link_to end_user_movie_favorite_path(@favorite), method: :delete do %>
+            <td><i class="fa fa-heart-o"></i><%end%> Favorites</td>
             <td>shared by <%= movie.end_user.first_name+" "+movie.end_user.last_name %></td>
           </tr>
 

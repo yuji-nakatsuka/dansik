@@ -57,33 +57,25 @@
 
     <div class="row">
       <div class="movie-itunes col-lg-12 col-md-12">
-        <h2>Songs Search from iTunes</h2>
+        <h2>Songs Search from <i class="fa fa-apple" aria-hidden="true"></i> Music</h2>
+      <% @itunes_search_songs.each do |itunes_song|%>
+        <div class="itunes-preview col-lg-3 col-md-3">
+          <% itunes_song.each do |s|%>
+          <% @core_url=s['trackViewUrl'].gsub(/https:\/\/music.apple.com\/jp\/album\//,"") %>
+          <% @core_url[-5,5]='' %><!-- 末尾の無駄なパラメータを削除 -->
+          <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="150" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/album/<%= @core_url %>/&app=music"></iframe>
+          <%end%>
+        </div>
+    <%end%>
+
       </div>
     </div><!-- row -->
 
     <div class="row">
-      <div class="movie-youtube col-lg-12 col-md-12">
-        <h2>Songs Search from YouTube</h2>
 
-      <% @youtube_search_videos.each do |video| %>
-        <% video.items.each do |item|%>
-          <% snippet = item.snippet %>
-           <div class="youtube_search_video col-lg-4 col-md-4">
-             <iframe width="300" height="200" src="https://www.youtube.com/embed/<%= item.id.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-             <p>
-               <% if  snippet.title.include?("&quot;")%><!-- タイトルに空白があるかチェック -->
-               <%= snippet.title.gsub!(/&quot;/, ' ') %>
-               <%else%>
-               <%= snippet.title %>
-               <%end%>
-             </p>
-           </div>
-        <%end%>
-
-      <%end%>
+      <!-- YouTubeのタグここに入れる -->
 
 
-      </div>
     </div><!-- row -->
 
     <div class="row">
