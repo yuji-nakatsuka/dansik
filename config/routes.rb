@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     resources :end_users, only: [:index, :show,:destroy]
     resources :movies, only: [:index, :show,:edit,:update,:destroy]
     resources :tags, only: [:index, :destroy]
-    resources :comments, only: [:index, :destroy]
+    resources :comments, only: [:index,:create, :destroy]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

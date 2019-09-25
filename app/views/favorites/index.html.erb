@@ -27,23 +27,27 @@
             </tr>
 
             <tr>
-              <td colspan="3"><%= link_to movie_path(favorite.movie_id) do%><span class="btn btn-info btn-block">Detail</span><%end%></td>
+              <td colspan="3"><%= link_to movie_path(favorite.movie_id) do%><span class="btn btn-detail btn-block">Detail</span><%end%></td>
             </tr>
 
           <% if !current_end_user.nil? && current_end_user.id==favorite.end_user.id%>
             <tr>
               <td colspan="3"><%= link_to edit_end_user_movie_path(current_end_user.id,favorite.movie_id)do%>
-                <span class="btn btn-success btn-block">Edit</span><%end%></td>
+                <span class="btn btn-edit btn-block">Edit</span><%end%></td>
             </tr>
             <tr>
               <td colspan="3"><%= link_to end_user_movie_path(current_end_user.id,favorite.movie_id),method: :delete,data: {confirm: '本当に削除しますか？'} do%>
-                <span class="btn btn-danger btn-block">Delete</span><%end%></td>
+                <span class="btn btn-delete btn-block">Delete</span><%end%></td>
             </tr>
           <% end %>
 
           </table>
 
         <%end%>
+
+        <div class="pager">
+          <%= paginate @favorites, class: "paginate" %>
+        </div>
 
     </div>
 </div>

@@ -28,7 +28,7 @@ GOOGLE_API_KEY = Rails.application.credentials.google[:api_key]
     @youtube_search_videos = []
     @itunes_search_songs = []
     @movie.songs.each do |song|
-    @youtube_search_videos << find_videos("#{song.song} #{song.artist}")
+    # @youtube_search_videos << find_videos("#{song.song} #{song.artist}")
     @itunes_search_songs << SearchClient.main("#{song.song}","#{song.artist}")
   end
     @comments=@movie.comments.all

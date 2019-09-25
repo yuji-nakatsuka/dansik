@@ -3,7 +3,7 @@ class Admins::EndUsersController < ApplicationController
 before_action :authenticate_admin!
 
   def index
-    @users=EndUser.all
+    @users=EndUser.page(params[:page]).reverse_order.per(20)
   end
 
   def destroy
@@ -14,6 +14,7 @@ before_action :authenticate_admin!
 
   def show
     @end_user=EndUser.find(params[:id])
+    @end_user_post=@end_user.movies.page(params[:page]).reverse_order.per(5)
   end
 
 end

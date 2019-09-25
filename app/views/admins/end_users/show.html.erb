@@ -22,7 +22,7 @@
       </table>
 
         <h1>User Posts</h1>
-        <% @end_user.movies.each do |movie| %>
+        <% @end_user_post.each do |movie| %>
 
           <table class="movie-index-table">
             <tr>
@@ -59,6 +59,10 @@
 
           </table>
           <%end%>
+
+          <div class="pager">
+            <%= paginate @end_user_post, class: "paginate" %>
+          </div>
 
   </div>
 </div>
