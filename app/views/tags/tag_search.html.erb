@@ -1,0 +1,46 @@
+<div class="container">
+  <%= render "layouts/end_user_header"%>
+
+    <div class="movie-tag-search-main">
+
+      <h1><%= params[:tag]+'での検索結果' %></h1>
+        <% @tag_searches.each do |tag|%>
+
+          <table class="movie-index-table">
+            <tr>
+              <td rowspan="2">
+                <%= link_to "https://www.youtube.com/embed/#{tag.movie.url.gsub(/https:\/\/www.youtube.com\/watch\?v=/,"")}",
+      :onclick=>"window.open(this.href,'hoge', 'height=400, width=700');return false;" do %>
+                <img class="thumbnail" src="https://i.ytimg.com/vi/<%= tag.movie.url.gsub(/https:\/\/www.youtube.com\/watch\?v=/,"") %>/hqdefault.jpg">
+              <%end%>
+              </td>
+              <td colspan="2"><h2><%= tag.movie.title %></h2></td>
+            </tr>
+            <tr>
+              <% if tag.movie.favorites.nil? %>
+                <td>0 Favorites</td>
+              <%else%>
+                <td><%= tag.movie.favorites.count %> Favorites</td>
+              <%end%>
+              <td>shared by <%= tag.movie.end_user.first_name+" "+tag.movie.end_user.last_name %></td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><%= link_to movie_path(tag.movie.id) do%><span class="btn btn-info btn-block">Detail</span><%end%></td>
+            </tr>
+
+          <% if !current_end_user.nil? && current_end_user.id==tag.movie.end_user.id%>
+            <tr>
+              <td colspan="3"><%= link_to edit_end_user_movie_path(current_end_user.id,tag.movie.id) do%>
+                <span class="btn btn-success btn-block">Edit</span><%end%></td>
+            </tr>
+            <tr>
+              <td colspan="3"><%= link_to end_user_movie_path(current_end_user.id,tag.movie.id),method: :delete,data: {confirm: '本当に削除しますか？'} do%>
+                <span class="btn btn-danger btn-block">Delete</span><%end%></td>
+            </tr>
+            <% end %>
+        </table>
+        <%end%>
+
+    </div>
+</div>

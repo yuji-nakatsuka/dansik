@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+<%= render "layouts/admin_header"%>
+  </div>
+
+  <div class="admin-index-main">
+
+    <h1>User List</h1>
+
+    <table class="user-info table">
+      <tr>
+        <th colspan="4">User Info</th>
+      </tr>
+
+
+    <% @users.each do |user| %>
+      <tr>
+        <td>Name: <%= user.first_name+" "+user.last_name %></td>
+        <td>Email: <%= user.email %></td>
+        <td><%= link_to "Detail", admins_end_user_path(user.id),class:"btn btn-detail" %></td>
+        <td><%= link_to "Delete", admins_end_user_path(user.id), method: :delete, data: {confirm: '本当に退会させますか？'},class:"btn btn-delete" %></td>
+      </tr>
+    <%end%>
+
+    </table>
+
+    <div class="pager">
+      <%= paginate @users, class: "paginate" %>
+    </div>
+
+  </div>
+
+</div>

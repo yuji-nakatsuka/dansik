@@ -1,21 +1,22 @@
 <header>
- <div class="container">
-   <nav>
+  <div class="clearfix">
      <%= link_to root_path do%>
-     <div class="header-site-logo">
-       <h1>DANSIK</h1>
+     <div class="header-site-logo pull-left">
+       <h2 class>DANSIK</h2>
      </div><%end%>
 
 <!-- ここからスタート -->
-     <div class="search_form">
-
+     <div class="search_form pull-left">
+      <%= form_tag(title_search_path,:method => 'get') do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag 'Search', :title => nil ,class:"search-button"%>
+      <% end %>
      </div>
-
 
      <% if end_user_signed_in? %>
        <ul class="nav navbar-nav navbar-right">
          <li>
-           <%= link_to "ALL Movies", movies_path %>
+           <%= link_to "All Movies", movies_path %>
          </li>
          <li>
            <%= link_to "Create Post",  new_end_user_movie_path(current_end_user.id) %>
@@ -30,7 +31,7 @@
      <% else %>
        <ul class="nav navbar-nav navbar-right">
          <li>
-           <%= link_to "ALL Movies", movies_path %>
+           <%= link_to "All Movies", movies_path %>
          </li>
          <li>
            <%= link_to "Login", new_end_user_session_path %>
@@ -40,6 +41,5 @@
          </li>
        </ul>
      <% end %>
-   </nav>
- </div>
+    </div>
 </header>

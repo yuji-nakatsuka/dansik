@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+  <%= render "layouts/admin_header"%>
+  </div>
+
+  <div class="show-main">
+
+    <h1>User Detail</h1>
+
+      <table class="user-info table">
+
+        <tr>
+          <th colspan="3">User Info</th>
+        </tr>
+
+        <tr>
+          <td>Name: <%= @end_user.first_name+" "+@end_user.last_name %></td>
+          <td>Email: <%= @end_user.email %></td>
+          <td><%= link_to "Delete", admins_end_user_path(@end_user.id), method: :delete, data: {confirm: '本当に退会させますか？'},class:"btn btn-delete" %></td>
+        </tr>
+
+      </table>
+
+        <h1>User Posts</h1>
+        <% @end_user_post.each do |movie| %>
+
+          <table class="movie-index-table">
+            <tr>
+              <td rowspan="2">
+                <%= link_to "https://www.youtube.com/embed/#{movie.url.gsub(/https:\/\/www.youtube.com\/watch\?v=/,"")}",
+      :onclick=>"window.open(this.href,'hoge', 'height=400, width=700');return false;" do %>
+                <img class="thumbnail" src="https://i.ytimg.com/vi/<%= movie.url.gsub(/https:\/\/www.youtube.com\/watch\?v=/,"") %>/hqdefault.jpg">
+              <%end%>
+              </td>
+              <td colspan="2"><h2><%= movie.title %></h2></td>
+            </tr>
+            <tr>
+              <% if movie.favorites.nil? %>
+                <td>0 Favorites</td>
+              <%else%>
+                <td><%= movie.favorites.count %> Favorites</td>
+              <%end%>
+              <td>shared by <%= movie.end_user.first_name+" "+movie.end_user.last_name %></td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><%= link_to admins_movie_path(movie.id) do%><span class="btn btn-detail btn-block">Detail</span><%end%></td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><%= link_to edit_admins_movie_path(movie.id) do%>
+                <span class="btn btn-edit btn-block">Edit</span><%end%></td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><%= link_to admins_movie_path(movie.id),method: :delete,data: {confirm: '本当に削除しますか？'} do%>
+                <span class="btn btn-delete btn-block">Delete</span><%end%></td>
+            </tr>
+
+          </table>
+          <%end%>
+
+          <div class="pager">
+            <%= paginate @end_user_post, class: "paginate" %>
+          </div>
+
+  </div>
+</div>

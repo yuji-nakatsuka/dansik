@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <%= render "layouts/admin_header"%>
+  </div>
+
+      <div class="admin-tag-main">
+
+        <h1>All Tags</h1>
+
+
+    <table class="tag-table table">
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= link_to tag_search_path(tag.tag) do%><%= tag.tag %><%end%></td>
+        <td><%= link_to "Delete", admins_tag_path(tag.id), method: :delete,class:"btn btn-delete" %></td>
+      </tr>
+    <%end%>
+    </table>
+
+    <div class="pager">
+      <%= paginate @tags, class: "paginate" %>
+    </div>
+
+      </div>
+</div>

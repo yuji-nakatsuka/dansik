@@ -1,0 +1,53 @@
+<div class="container">
+  <%= render "layouts/end_user_header"%>
+
+    <div class="favorite-index-main">
+
+      <h1>My Favorites</h1>
+
+        <% @favorites.each do |favorite| %>
+
+          <table class="favorite-index-table">
+            <tr>
+              <td rowspan="2">
+                <%= link_to "https://www.youtube.com/embed/#{favorite.movie.url.gsub(/https:\/\/www.youtube.com\/watch\?v=/,"")}",
+      :onclick=>"window.open(this.href,'hoge', 'height=400, width=700');return false;" do %>
+                <img class="thumbnail" src="https://i.ytimg.com/vi/<%= favorite.movie.url.gsub(/https:\/\/www.youtube.com\/watch\?v=/,"") %>/hqdefault.jpg">
+              <%end%>
+              </td>
+              <td colspan="2"><h2><%= favorite.movie.title %></h2></td>
+            </tr>
+            <tr>
+              <% if favorite.movie.favorites.nil? %>
+                <td>0 Favorites</td>
+              <%else%>
+                <td><%= favorite.movie.favorites.count %> Favorites</td>
+              <%end%>
+              <td>shared by <%= favorite.movie.end_user.first_name+" "+favorite.movie.end_user.last_name %></td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><%= link_to movie_path(favorite.movie_id) do%><span class="btn btn-detail btn-block">Detail</span><%end%></td>
+            </tr>
+
+          <% if !current_end_user.nil? && current_end_user.id==favorite.end_user.id%>
+            <tr>
+              <td colspan="3"><%= link_to edit_end_user_movie_path(current_end_user.id,favorite.movie_id)do%>
+                <span class="btn btn-edit btn-block">Edit</span><%end%></td>
+            </tr>
+            <tr>
+              <td colspan="3"><%= link_to end_user_movie_path(current_end_user.id,favorite.movie_id),method: :delete,data: {confirm: '本当に削除しますか？'} do%>
+                <span class="btn btn-delete btn-block">Delete</span><%end%></td>
+            </tr>
+          <% end %>
+
+          </table>
+
+        <%end%>
+
+        <div class="pager">
+          <%= paginate @favorites, class: "paginate" %>
+        </div>
+
+    </div>
+</div>
