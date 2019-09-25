@@ -67,12 +67,33 @@
       </div>
     </div><!-- row -->
 
+    <div class="row">
 
+      <div class="movie-youtube col-lg-12 col-md-12">
+        <h2>Songs Search from YouTube</h2>
+
+      <% @youtube_search_videos.each do |video| %>
+        <% video.items.each do |item|%>
+          <% snippet = item.snippet %>
+           <div class="youtube_search_video col-lg-4 col-md-4">
+             <iframe width="300" height="200" src="https://www.youtube.com/embed/<%= item.id.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+             <p>
+               <% if  snippet.title.include?("&quot;"||"&#39;")%><!-- タイトルに空白等があるかチェック -->
+               <span class="youtube_search-title"><%= snippet.title.gsub!(/&quot;/, ' ') %></span>
+              <%else%>
+               <span class="youtube_search-title"><%= snippet.title %></span>
+               <%end%>
+             </p>
+           </div>
+        <%end%>
+      <%end%>
+      </div><!-- movie-youtube -->
+
+
+
+    </div><!-- row -->
 
     <div class="row">
-      <div class="movie-comments col-lg-12 col-md-12">
-        <h2>Comments <i class="fa fa-comment"></i></h2>
-
           <table class="comment-table table">
           <% @comments.each do |comment| %>
             <tr>
@@ -85,8 +106,6 @@
             </tr>
           <%end%>
           </table>
-
-      </div>
     </div><!-- row -->
 
     <div class="row">
