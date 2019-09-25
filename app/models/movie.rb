@@ -1,7 +1,8 @@
 class Movie < ApplicationRecord
-  has_many :songs
-  has_many :comments
-  has_many :tags
+  has_many :songs,dependent: :destroy
+  has_many :comments,dependent: :destroy
+  has_many :favorites,dependent: :destroy
+  has_many :tags,dependent: :destroy
   belongs_to :end_user
 
   accepts_nested_attributes_for :songs, allow_destroy: true
@@ -11,7 +12,22 @@ class Movie < ApplicationRecord
          favorites.where(end_user_id: user.id).exists?
        end
 
+  def self.search(search)
+    if search
+      Movie.where(['title LIKE ?',"%#{search}%"])
+    else
+      Movie.all
+    end
+  end
+
+  def self.create_all_ranks
+      Movie.find(Favorite.group(:movie_id).order('count(movie_id) desc').limit(10).pluck(:movie_id))
+    end
+
+
 end
+
+
 
 
 require 'itunes-search-api'

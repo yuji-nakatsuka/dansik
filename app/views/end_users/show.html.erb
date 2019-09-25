@@ -1,38 +1,61 @@
-<%= render "layouts/end_user_header"%>
 
-<div class="show-main">
+<div class="container">
+  <div class="row">
+    <%= render "layouts/end_user_header"%>
+  </div>
 
-  <h1>My Page</h1>
+  <div class="show-main">
+    <div class="row">
+      <h1>My Page</h1>
 
-    <table class="user-info">
+        <table class="user-info user-info-margin table-striped">
 
-      <tr>
-        <th colspan="2">My Info</th>
-      </tr>
+          <tr>
+            <th colspan="2">My Info</th>
+          </tr>
 
-      <tr>
-        <td>Name:<%= @end_user.first_name+" "+@end_user.last_name %></td>
-        <td>Email: <%= @end_user.email %></td>
-      </tr>
-
-    </table>
-
-    <div>
-      <h2>My Posts</h2>
+          <tr>
+            <td>Name: <%= @end_user.first_name+" "+@end_user.last_name %></td>
+            <td>Email: <%= @end_user.email %></td>
+          </tr>
+        </table>
     </div>
 
-    <div>
-      <h2>My Favorites</h2>
-    </div>
+    <div class="my-menu">
 
-    <div>
-      <h2>Account Edit</h2>
-    </div>
-
-    <div>
-      <%= link_to end_user_registration_path,method: :delete do %>
-      <h2>Delete Account</h2>
+    <div class="row">
+      <%= link_to my_post_path(current_end_user) do %>
+        <div class="pull-left account-menu">
+        <h2>My Posts</h2>
+      </div>
       <%end%>
     </div>
+
+    <div class="row">
+      <%= link_to edit_end_user_path(current_end_user) do %>
+        <div class="pull-right account-menu">
+        <h2>Account Edit</h2>
+        </div>
+        <%end%>
+    </div>
+
+    <div class="row">
+      <%= link_to end_user_favorites_path(current_end_user) do %>
+        <div class="pull-left account-menu">
+          <h2>My Favorites</h2>
+        </div>
+      <%end%>
+    </div>
+
+    <div class="row">
+      <%= link_to end_user_path,method: :delete,data: {confirm: '本当に退会しますか？'} do %>
+      <div class="pull-right account-menu">
+      <h2>Delete Account</h2>
+      </div>
+      <%end%>
+    </div>
+
+    </div>
+  </div>
 
 </div>

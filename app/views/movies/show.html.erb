@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row">
 <%= render "layouts/end_user_header"%>
@@ -19,19 +18,36 @@
             </td>
           </tr>
           <tr>
-            <td><i class="fa fa-heart-o"></i> Favorites</td>
+            <% if !current_end_user.nil? %>
+            <% if @movie.favorited_by?(current_end_user) %>
+            <td>
+              <%= link_to movie_favorite_path(current_end_user,@movie), method: :delete do %>
+               <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+               <%end%>
+               <%= @movie.favorites.count %> Favorites</td>
+            <% else %>
+            <td>
+              <%= link_to movie_favorites_path(@movie), method: :post do %>
+              <i class="fa fa-heart-o"></i><%end%>
+              <%= @movie.favorites.count %> Favorites</td>
+          <%end%>
+          <%else%>
+          <td>
+             <%= @movie.favorites.count %> Favorites</td>
+          <%end%>
+
             <td>shared by <%= @movie.end_user.first_name+" "+@movie.end_user.last_name %></td>
           </tr>
 
         <% if !current_end_user.nil? && current_end_user.id==@movie.end_user.id %>
           <tr>
           <td colspan="3"><%= link_to edit_end_user_movie_path(current_end_user.id,@movie.id)do%>
-            <span class="btn btn-success btn-block">Edit</span><%end%></td>
+            <span class="btn btn-edit btn-block">Edit</span><%end%></td>
           </tr>
 
           <tr>
             <td colspan="2"><%= link_to end_user_movie_path(current_end_user.id,@movie.id),method: :delete,data: {confirm: '本当に削除しますか？'} do%>
-              <span class="btn btn-danger btn-block">Delete</span><%end%></td>
+              <span class="btn btn-delete btn-block">Delete</span><%end%></td>
           </tr>
         <% end %>
 
@@ -40,7 +56,7 @@
 
       <div class="movie-songs col-lg-5 col-md-5">
         <h2>Used Songs</h2>
-        <table class="movie-songs-table table table-striped">
+        <table class="movie-songs-table table">
           <tr>
             <th>Song Title</th>
             <th>Artist</th>
@@ -73,9 +89,54 @@
 
     <div class="row">
 
-      <!-- YouTubeのタグここに入れる -->
+    <div class="movie-youtube col-lg-12 col-md-12">
+      <h2>Songs Search from YouTube</h2>
+
+    <% @youtube_search_videos.each do |video| %>
+      <% video.items.each do |item|%>
+        <% snippet = item.snippet %>
+         <div class="youtube_search_video col-lg-4 col-md-4">
+           <iframe width="300" height="200" src="https://www.youtube.com/embed/<%= item.id.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           <p>
+             <% if  snippet.title.include?("&quot;"||"&#39;")%><!-- タイトルに空白等があるかチェック -->
+              <span class="youtube_search-title"><%= snippet.title.gsub!(/&quot;/, ' ') %></span>
+            <%else%>
+             <span class="youtube_search-title"><%= snippet.title %></span>
+             <%end%>
+           </p>
+         </div>
+      <%end%>
+    <%end%>
+    </div><!-- movie-youtube -->
 
 
+    </div><!-- row -->
+
+    <div class="row">
+      <div class="movie-comments col-lg-12 col-md-12">
+        <h2>Comments <i class="fa fa-comment"></i></h2>
+
+        <%= form_for @comment,url: movie_comments_path(@movie) do |f| %>
+          <table class="comment-post-table">
+            <tr>
+              <td><%= f.text_area :comment %> <%= f.submit "comment",class:"comment-submit" %></td>
+            </tr>
+          </table>
+        <%end%>
+
+          <table class="comment-table table">
+          <% @comments.each do |comment| %>
+            <tr>
+              <td><%= link_to end_user_path(comment.end_user_id) do%>
+                <%= comment.end_user.first_name+" "+comment.end_user.last_name  %>
+              <%end%>
+              </td>
+              <td><%= comment.comment %></td>
+            </tr>
+          <%end%>
+          </table>
+
+      </div>
     </div><!-- row -->
 
     <div class="row">
@@ -83,7 +144,7 @@
         <h2>Tags</h2>
           <p>
           <% @movie.tags.each do |tag| %>
-              <%= link_to tag_search_path do%><%= tag.tag %><%end%>
+              <%= link_to tag_search_path(tag.tag) do%><%= tag.tag %><%end%>
             <%end%>
           </p>
       </div>

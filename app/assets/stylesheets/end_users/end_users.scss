@@ -1,3 +1,40 @@
 // Place all the styles related to the end_users/end_users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-info {
+  table-layout: fixed;
+  width:80%;
+  border:1px solid white;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.user-info th{
+  text-align: center;
+}
+
+.user-info-margin {
+  margin-bottom:30px;
+}
+
+.account-menu {
+  background-color: rgb(28, 28, 28);
+}
+
+.account-menu:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.account-menu:hover h2{
+  color:rgb(28, 28, 28);
+}
+
+.account-menu h2{
+  margin:10px;
+}
+
+
+.account-menu h2{
+  padding:0 20px;
+}

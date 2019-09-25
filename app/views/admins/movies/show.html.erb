@@ -1,0 +1,136 @@
+<div class="container">
+  <div class="row">
+<%= render "layouts/admin_header"%>
+  </div>
+
+  <div class="movie-show-main">
+
+    <div class="row">
+
+      <div class="movie-image col-lg-7 col-md-7">
+        <table class="movie-image-table">
+          <tr>
+            <td colspan="2"><h2><%= @movie.title %></h2></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/<%= @movie.url.slice(-11,11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">shared by <%= @movie.end_user.first_name+" "+@movie.end_user.last_name %></td>
+          </tr>
+
+          <tr>
+          <td colspan="3"><%= link_to edit_admins_movie_path(@movie.id) do%>
+            <span class="btn btn-edit btn-block">Edit</span><%end%></td>
+          </tr>
+
+          <tr>
+            <td colspan="2"><%= link_to admins_movie_path(@movie.id),method: :delete,data: {confirm: '本当に削除しますか？'} do%>
+              <span class="btn btn-delete btn-block">Delete</span><%end%></td>
+          </tr>
+
+        </table>
+      </div>
+
+      <div class="movie-songs col-lg-5 col-md-5">
+        <h2>Used Songs</h2>
+        <table class="movie-songs-table table">
+          <tr>
+            <th>Song Title</th>
+            <th>Artist</th>
+          </tr>
+        <% @movie.songs.each do |song| %>
+          <tr>
+            <td><%= song.song %></td>
+            <td><%= song.artist %></td>
+          </tr>
+          <%end%>
+        </table>
+      </div>
+        </div><!-- row -->
+
+    <div class="row">
+      <div class="movie-itunes col-lg-12 col-md-12">
+        <h2>Songs Search from <i class="fa fa-apple" aria-hidden="true"></i> Music</h2>
+      <% @itunes_search_songs.each do |itunes_song|%>
+        <div class="itunes-preview col-lg-3 col-md-3">
+          <% itunes_song.each do |s|%>
+          <% @core_url=s['trackViewUrl'].gsub(/https:\/\/music.apple.com\/jp\/album\//,"") %>
+          <% @core_url[-5,5]='' %><!-- 末尾の無駄なパラメータを削除 -->
+          <iframe allow="autoplay *; encrypted-media *;" frameborder="0" height="150" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/album/<%= @core_url %>/&app=music"></iframe>
+          <%end%>
+        </div>
+    <%end%>
+
+      </div>
+    </div><!-- row -->
+
+    <div class="row">
+
+      <div class="movie-youtube col-lg-12 col-md-12">
+        <h2>Songs Search from YouTube</h2>
+
+      <% @youtube_search_videos.each do |video| %>
+        <% video.items.each do |item|%>
+          <% snippet = item.snippet %>
+           <div class="youtube_search_video col-lg-4 col-md-4">
+             <iframe width="300" height="200" src="https://www.youtube.com/embed/<%= item.id.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+             <p>
+               <% if  snippet.title.include?("&quot;"||"&#39;")%><!-- タイトルに空白等があるかチェック -->
+               <span class="youtube_search-title"><%= snippet.title.gsub!(/&quot;/, ' ') %></span>
+              <%else%>
+               <span class="youtube_search-title"><%= snippet.title %></span>
+               <%end%>
+             </p>
+           </div>
+        <%end%>
+      <%end%>
+      </div><!-- movie-youtube -->
+
+
+
+    </div><!-- row -->
+
+    <div class="row">
+      <div class="movie-comments col-lg-12 col-md-12">
+        <h2>Comments <i class="fa fa-comment"></i></h2>
+
+        <%= form_for @comment,url: movie_comments_path(@movie) do |f| %>
+          <table class="comment-post-table">
+            <tr>
+              <td><%= f.text_area :comment %> <%= f.submit "comment",class:"comment-submit" %></td>
+            </tr>
+          </table>
+        <%end%>
+
+          <table class="comment-table table">
+          <% @comments.each do |comment| %>
+            <tr>
+              <td><%= link_to end_user_path(comment.end_user_id) do%>
+                <%= comment.end_user.first_name+" "+comment.end_user.last_name  %>
+              <%end%>
+              </td>
+              <td><%= comment.comment %></td>
+              <td><%= link_to 'Delete', admins_comment_path(comment.id),method: :delete,class: "btn btn-delete" %></td>
+            </tr>
+          <%end%>
+          </table>
+
+      </div>
+    </div><!-- row -->
+
+    <div class="row">
+      <div class="movie-tags col-lg-12 col-md-12">
+        <h2>Tags</h2>
+          <p>
+          <% @movie.tags.each do |tag| %>
+              <%= link_to tag_search_path(tag.tag) do%><%= tag.tag %><%end%>
+            <%end%>
+          </p>
+      </div>
+    </div><!-- row -->
+
+  </div><!-- movie-show-main -->
+</div><!-- container -->

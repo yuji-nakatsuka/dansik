@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+  <%= render "layouts/admin_header"%>
+  </div>
+
+  <h2>Edit Post</h2>
+
+  <%= form_for @movie,url: admins_movie_path do |f| %>
+
+    <div class="field">
+      <label>Title</label><br />
+      <%= f.text_field :title,autofocus: true %>
+    </div>
+
+      <div class="field">
+        <label>URL</label><br />
+        <%= f.text_field :url %>
+      </div>
+
+    <div class="songs">
+      <%= f.fields_for :songs do |song| %>
+
+    <%= render "movies/song_fields", f: song %>
+
+      <% end %>
+
+      <div class="links">
+       <%= link_to_add_association "Song Add", f, :songs %>
+     </div>
+    </div>
+
+     <div class="tags">
+       <%= f.fields_for :tags do |tag| %>
+       <label>Tag</label><br />
+
+     <%= render "movies/tag_fields", f: tag %>
+
+       <% end %>
+
+       <div class="links">
+        <%= link_to_add_association "Tag Add", f, :tags %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Edit" %>
+    </div>
+  <% end %>
+
+</div>
