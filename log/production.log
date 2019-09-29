@@ -2641,3 +2641,52 @@ D, [2019-09-29T11:40:34.843633 #30978] DEBUG -- : [bdfb964a-59ff-4759-bc87-b71b7
 I, [2019-09-29T11:40:34.844274 #30978]  INFO -- : [bdfb964a-59ff-4759-bc87-b71b7388a55d]   Rendering admins/tops/top.html.erb within layouts/application
 I, [2019-09-29T11:40:34.844554 #30978]  INFO -- : [bdfb964a-59ff-4759-bc87-b71b7388a55d]   Rendered admins/tops/top.html.erb within layouts/application (0.2ms)
 I, [2019-09-29T11:40:34.845067 #30978]  INFO -- : [bdfb964a-59ff-4759-bc87-b71b7388a55d] Completed 200 OK in 8ms (Views: 1.0ms | ActiveRecord: 2.9ms)
+I, [2019-09-29T11:43:49.898452 #30978]  INFO -- : [57e99666-e82f-4143-af41-de6eb08822f1] Started GET "/admins" for 133.137.185.128 at 2019-09-29 11:43:49 +0000
+I, [2019-09-29T11:43:49.899137 #30978]  INFO -- : [57e99666-e82f-4143-af41-de6eb08822f1] Processing by Admins::TopsController#top as HTML
+D, [2019-09-29T11:43:49.906175 #30978] DEBUG -- : [57e99666-e82f-4143-af41-de6eb08822f1]   [1m[36mAdmin Load (3.2ms)[0m  [1m[34mSELECT  `admins`.* FROM `admins` WHERE `admins`.`id` = 3 ORDER BY `admins`.`id` ASC LIMIT 1[0m
+I, [2019-09-29T11:43:49.907808 #30978]  INFO -- : [57e99666-e82f-4143-af41-de6eb08822f1]   Rendering admins/tops/top.html.erb within layouts/application
+I, [2019-09-29T11:43:49.908293 #30978]  INFO -- : [57e99666-e82f-4143-af41-de6eb08822f1]   Rendered admins/tops/top.html.erb within layouts/application (0.4ms)
+I, [2019-09-29T11:43:49.908772 #30978]  INFO -- : [57e99666-e82f-4143-af41-de6eb08822f1] Completed 200 OK in 10ms (Views: 1.1ms | ActiveRecord: 3.2ms)
+I, [2019-09-29T11:43:56.513880 #30978]  INFO -- : [d4e36546-547a-4eb7-bd04-d4ed049723c0] Started GET "/admins/movies" for 133.137.185.128 at 2019-09-29 11:43:56 +0000
+I, [2019-09-29T11:43:56.514559 #30978]  INFO -- : [d4e36546-547a-4eb7-bd04-d4ed049723c0] Processing by Admins::MoviesController#index as HTML
+D, [2019-09-29T11:43:56.521185 #30978] DEBUG -- : [d4e36546-547a-4eb7-bd04-d4ed049723c0]   [1m[36mAdmin Load (2.9ms)[0m  [1m[34mSELECT  `admins`.* FROM `admins` WHERE `admins`.`id` = 3 ORDER BY `admins`.`id` ASC LIMIT 1[0m
+I, [2019-09-29T11:43:56.521995 #30978]  INFO -- : [d4e36546-547a-4eb7-bd04-d4ed049723c0]   Rendering admins/movies/index.html.erb within layouts/application
+I, [2019-09-29T11:43:56.522614 #30978]  INFO -- : [d4e36546-547a-4eb7-bd04-d4ed049723c0]   Rendered layouts/_admin_header.html.erb (0.5ms)
+D, [2019-09-29T11:43:56.525643 #30978] DEBUG -- : [d4e36546-547a-4eb7-bd04-d4ed049723c0]   [1m[36mMovie Load (2.8ms)[0m  [1m[34mSELECT  `movies`.* FROM `movies` ORDER BY `movies`.`id` DESC LIMIT 5 OFFSET 0[0m
+D, [2019-09-29T11:43:56.529248 #30978] DEBUG -- : [d4e36546-547a-4eb7-bd04-d4ed049723c0]   [1m[35m (2.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `favorites` WHERE `favorites`.`movie_id` = 4[0m
+D, [2019-09-29T11:43:56.532512 #30978] DEBUG -- : [d4e36546-547a-4eb7-bd04-d4ed049723c0]   [1m[36mEndUser Load (2.8ms)[0m  [1m[34mSELECT  `end_users`.* FROM `end_users` WHERE `end_users`.`id` = 1 LIMIT 1[0m
+D, [2019-09-29T11:43:56.536143 #30978] DEBUG -- : [d4e36546-547a-4eb7-bd04-d4ed049723c0]   [1m[35m (2.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `favorites` WHERE `favorites`.`movie_id` = 3[0m
+D, [2019-09-29T11:43:56.536620 #30978] DEBUG -- : [d4e36546-547a-4eb7-bd04-d4ed049723c0]   [1m[36mCACHE EndUser Load (0.0ms)[0m  [1m[34mSELECT  `end_users`.* FROM `end_users` WHERE `end_users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+D, [2019-09-29T11:43:56.540138 #30978] DEBUG -- : [d4e36546-547a-4eb7-bd04-d4ed049723c0]   [1m[35m (2.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `favorites` WHERE `favorites`.`movie_id` = 2[0m
+D, [2019-09-29T11:43:56.540597 #30978] DEBUG -- : [d4e36546-547a-4eb7-bd04-d4ed049723c0]   [1m[36mCACHE EndUser Load (0.0ms)[0m  [1m[34mSELECT  `end_users`.* FROM `end_users` WHERE `end_users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+I, [2019-09-29T11:43:56.541204 #30978]  INFO -- : [d4e36546-547a-4eb7-bd04-d4ed049723c0]   Rendered admins/movies/index.html.erb within layouts/application (19.1ms)
+I, [2019-09-29T11:43:56.541820 #30978]  INFO -- : [d4e36546-547a-4eb7-bd04-d4ed049723c0] Completed 200 OK in 27ms (Views: 6.2ms | ActiveRecord: 16.7ms)
+I, [2019-09-29T11:44:02.847629 #30978]  INFO -- : [857f019b-f95c-4848-9d28-ec857cc8ac94] Started DELETE "/admins/sign_out" for 133.137.185.128 at 2019-09-29 11:44:02 +0000
+I, [2019-09-29T11:44:02.848299 #30978]  INFO -- : [857f019b-f95c-4848-9d28-ec857cc8ac94] Processing by Admins::SessionsController#destroy as HTML
+I, [2019-09-29T11:44:02.848346 #30978]  INFO -- : [857f019b-f95c-4848-9d28-ec857cc8ac94]   Parameters: {"authenticity_token"=>"WBa+2Soao8ynNUJvBTTNqZ2F5xepZpwQcjgqORw5e5WIuRDPcaOWPF55f/rzOBkitV/4Hbpdyotn/my/6mtICg=="}
+D, [2019-09-29T11:44:02.854930 #30978] DEBUG -- : [857f019b-f95c-4848-9d28-ec857cc8ac94]   [1m[36mAdmin Load (2.9ms)[0m  [1m[34mSELECT  `admins`.* FROM `admins` WHERE `admins`.`id` = 3 ORDER BY `admins`.`id` ASC LIMIT 1[0m
+D, [2019-09-29T11:44:02.858325 #30978] DEBUG -- : [857f019b-f95c-4848-9d28-ec857cc8ac94]   [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+D, [2019-09-29T11:44:02.861506 #30978] DEBUG -- : [857f019b-f95c-4848-9d28-ec857cc8ac94]   [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+I, [2019-09-29T11:44:02.862097 #30978]  INFO -- : [857f019b-f95c-4848-9d28-ec857cc8ac94] Redirected to http://ec2-3-113-214-47.ap-northeast-1.compute.amazonaws.com/
+I, [2019-09-29T11:44:02.862210 #30978]  INFO -- : [857f019b-f95c-4848-9d28-ec857cc8ac94] Completed 302 Found in 14ms (ActiveRecord: 8.3ms)
+I, [2019-09-29T11:44:03.862995 #30978]  INFO -- : [9d31b179-3ddc-4a45-93c7-7742b4ce598f] Started GET "/" for 133.137.185.128 at 2019-09-29 11:44:03 +0000
+I, [2019-09-29T11:44:03.863694 #30978]  INFO -- : [9d31b179-3ddc-4a45-93c7-7742b4ce598f] Processing by EndUsers::TopsController#top as HTML
+D, [2019-09-29T11:44:03.870447 #30978] DEBUG -- : [9d31b179-3ddc-4a45-93c7-7742b4ce598f]   [1m[35m (3.0ms)[0m  [1m[34mSELECT  `favorites`.`movie_id` FROM `favorites` GROUP BY `favorites`.`movie_id` ORDER BY count(movie_id) desc LIMIT 10[0m
+I, [2019-09-29T11:44:03.870927 #30978]  INFO -- : [9d31b179-3ddc-4a45-93c7-7742b4ce598f]   Rendering end_users/tops/top.html.erb within layouts/application
+I, [2019-09-29T11:44:03.871657 #30978]  INFO -- : [9d31b179-3ddc-4a45-93c7-7742b4ce598f]   Rendered layouts/_end_user_header.html.erb (0.6ms)
+I, [2019-09-29T11:44:03.871734 #30978]  INFO -- : [9d31b179-3ddc-4a45-93c7-7742b4ce598f]   Rendered end_users/tops/top.html.erb within layouts/application (0.7ms)
+I, [2019-09-29T11:44:03.872267 #30978]  INFO -- : [9d31b179-3ddc-4a45-93c7-7742b4ce598f] Completed 200 OK in 8ms (Views: 1.5ms | ActiveRecord: 3.0ms)
+I, [2019-09-29T11:44:07.892342 #30978]  INFO -- : [622c5293-970e-4745-bcb9-0afea11408a0] Started GET "/admins/sign_up" for 133.137.185.128 at 2019-09-29 11:44:07 +0000
+I, [2019-09-29T11:44:07.893005 #30978]  INFO -- : [622c5293-970e-4745-bcb9-0afea11408a0] Processing by Admins::RegistrationsController#new as HTML
+I, [2019-09-29T11:44:07.894190 #30978]  INFO -- : [622c5293-970e-4745-bcb9-0afea11408a0]   Rendering admins/registrations/new.html.erb within layouts/application
+I, [2019-09-29T11:44:07.894581 #30978]  INFO -- : [622c5293-970e-4745-bcb9-0afea11408a0]   Rendered vendor/bundle/ruby/2.5.0/gems/devise-4.7.1/app/views/devise/shared/_error_messages.html.erb (0.0ms)
+I, [2019-09-29T11:44:07.896134 #30978]  INFO -- : [622c5293-970e-4745-bcb9-0afea11408a0]   Rendered admins/shared/_links.html.erb (0.1ms)
+I, [2019-09-29T11:44:07.896196 #30978]  INFO -- : [622c5293-970e-4745-bcb9-0afea11408a0]   Rendered admins/registrations/new.html.erb within layouts/application (1.9ms)
+I, [2019-09-29T11:44:07.896703 #30978]  INFO -- : [622c5293-970e-4745-bcb9-0afea11408a0] Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+I, [2019-09-29T12:25:13.822401 #30978]  INFO -- : [eadd281a-fe4b-47f0-b9f0-7ff08fe2620f] Started GET "/admins/sign_up" for 133.137.185.128 at 2019-09-29 12:25:13 +0000
+I, [2019-09-29T12:25:13.823047 #30978]  INFO -- : [eadd281a-fe4b-47f0-b9f0-7ff08fe2620f] Processing by Admins::RegistrationsController#new as HTML
+I, [2019-09-29T12:25:13.824166 #30978]  INFO -- : [eadd281a-fe4b-47f0-b9f0-7ff08fe2620f]   Rendering admins/registrations/new.html.erb within layouts/application
+I, [2019-09-29T12:25:13.824571 #30978]  INFO -- : [eadd281a-fe4b-47f0-b9f0-7ff08fe2620f]   Rendered vendor/bundle/ruby/2.5.0/gems/devise-4.7.1/app/views/devise/shared/_error_messages.html.erb (0.0ms)
+I, [2019-09-29T12:25:13.825986 #30978]  INFO -- : [eadd281a-fe4b-47f0-b9f0-7ff08fe2620f]   Rendered admins/shared/_links.html.erb (0.1ms)
+I, [2019-09-29T12:25:13.826048 #30978]  INFO -- : [eadd281a-fe4b-47f0-b9f0-7ff08fe2620f]   Rendered admins/registrations/new.html.erb within layouts/application (1.8ms)
+I, [2019-09-29T12:25:13.826500 #30978]  INFO -- : [eadd281a-fe4b-47f0-b9f0-7ff08fe2620f] Completed 200 OK in 3ms (Views: 2.6ms)
