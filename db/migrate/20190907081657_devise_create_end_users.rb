@@ -2,7 +2,7 @@
 
 class DeviseCreateEndUsers < ActiveRecord::Migration[5.2]
   def change
-    create_table :end_users do |t|
+    create_table :end_users, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""

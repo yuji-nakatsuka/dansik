@@ -1,0 +1,13 @@
+current directory: /var/www/html/dansik/vendor/bundle/ruby/2.5.0/gems/json-2.2.0/ext/json
+/home/ec2-user/.rbenv/versions/2.5.5/bin/ruby -r ./siteconf20190928-20630-1bed9rz.rb extconf.rb
+creating Makefile
+
+current directory: /var/www/html/dansik/vendor/bundle/ruby/2.5.0/gems/json-2.2.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /var/www/html/dansik/vendor/bundle/ruby/2.5.0/gems/json-2.2.0/ext/json
+make "DESTDIR="
+make: `all' に対して行うべき事はありません.
+
+current directory: /var/www/html/dansik/vendor/bundle/ruby/2.5.0/gems/json-2.2.0/ext/json
+make "DESTDIR=" install

@@ -1,6 +1,6 @@
 class CreateComments < ActiveRecord::Migration[5.2]
   def change
-    create_table :comments do |t|
+    create_table :comments, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.text      :comment, null: false
       t.integer   :end_user_id, null: false
       t.integer   :movie_id, null: false
