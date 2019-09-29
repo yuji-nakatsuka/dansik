@@ -2690,3 +2690,33 @@ I, [2019-09-29T12:25:13.824571 #30978]  INFO -- : [eadd281a-fe4b-47f0-b9f0-7ff08
 I, [2019-09-29T12:25:13.825986 #30978]  INFO -- : [eadd281a-fe4b-47f0-b9f0-7ff08fe2620f]   Rendered admins/shared/_links.html.erb (0.1ms)
 I, [2019-09-29T12:25:13.826048 #30978]  INFO -- : [eadd281a-fe4b-47f0-b9f0-7ff08fe2620f]   Rendered admins/registrations/new.html.erb within layouts/application (1.8ms)
 I, [2019-09-29T12:25:13.826500 #30978]  INFO -- : [eadd281a-fe4b-47f0-b9f0-7ff08fe2620f] Completed 200 OK in 3ms (Views: 2.6ms)
+I, [2019-09-29T12:36:19.866139 #30978]  INFO -- : [6ed409c4-d1a5-4933-9aba-d8a38c1ba31a] Started GET "/admins/sign_up" for 133.137.185.128 at 2019-09-29 12:36:19 +0000
+I, [2019-09-29T12:36:19.866807 #30978]  INFO -- : [6ed409c4-d1a5-4933-9aba-d8a38c1ba31a] Processing by Admins::RegistrationsController#new as HTML
+I, [2019-09-29T12:36:19.867971 #30978]  INFO -- : [6ed409c4-d1a5-4933-9aba-d8a38c1ba31a]   Rendering admins/registrations/new.html.erb within layouts/application
+I, [2019-09-29T12:36:19.868363 #30978]  INFO -- : [6ed409c4-d1a5-4933-9aba-d8a38c1ba31a]   Rendered vendor/bundle/ruby/2.5.0/gems/devise-4.7.1/app/views/devise/shared/_error_messages.html.erb (0.0ms)
+I, [2019-09-29T12:36:19.869859 #30978]  INFO -- : [6ed409c4-d1a5-4933-9aba-d8a38c1ba31a]   Rendered admins/shared/_links.html.erb (0.1ms)
+I, [2019-09-29T12:36:19.869921 #30978]  INFO -- : [6ed409c4-d1a5-4933-9aba-d8a38c1ba31a]   Rendered admins/registrations/new.html.erb within layouts/application (1.9ms)
+I, [2019-09-29T12:36:19.870372 #30978]  INFO -- : [6ed409c4-d1a5-4933-9aba-d8a38c1ba31a] Completed 200 OK in 3ms (Views: 2.7ms)
+I, [2019-09-29T12:36:21.513763 #30978]  INFO -- : [218cc841-05c9-48b3-bf8d-d77a94af97e0] Started GET "/admins/sign_up" for 133.137.185.128 at 2019-09-29 12:36:21 +0000
+I, [2019-09-29T12:36:21.514425 #30978]  INFO -- : [218cc841-05c9-48b3-bf8d-d77a94af97e0] Processing by Admins::RegistrationsController#new as HTML
+I, [2019-09-29T12:36:21.515571 #30978]  INFO -- : [218cc841-05c9-48b3-bf8d-d77a94af97e0]   Rendering admins/registrations/new.html.erb within layouts/application
+I, [2019-09-29T12:36:21.515977 #30978]  INFO -- : [218cc841-05c9-48b3-bf8d-d77a94af97e0]   Rendered vendor/bundle/ruby/2.5.0/gems/devise-4.7.1/app/views/devise/shared/_error_messages.html.erb (0.0ms)
+I, [2019-09-29T12:36:21.517417 #30978]  INFO -- : [218cc841-05c9-48b3-bf8d-d77a94af97e0]   Rendered admins/shared/_links.html.erb (0.1ms)
+I, [2019-09-29T12:36:21.517501 #30978]  INFO -- : [218cc841-05c9-48b3-bf8d-d77a94af97e0]   Rendered admins/registrations/new.html.erb within layouts/application (1.8ms)
+I, [2019-09-29T12:36:21.517945 #30978]  INFO -- : [218cc841-05c9-48b3-bf8d-d77a94af97e0] Completed 200 OK in 3ms (Views: 2.7ms)
+I, [2019-09-29T12:36:27.162507 #30978]  INFO -- : [449a5614-7215-4c4f-a0e4-faad7dd17ab0] Started GET "/admins" for 133.137.185.128 at 2019-09-29 12:36:27 +0000
+I, [2019-09-29T12:36:27.163185 #30978]  INFO -- : [449a5614-7215-4c4f-a0e4-faad7dd17ab0] Processing by Admins::TopsController#top as HTML
+I, [2019-09-29T12:36:27.163804 #30978]  INFO -- : [449a5614-7215-4c4f-a0e4-faad7dd17ab0] Completed 401 Unauthorized in 1ms
+I, [2019-09-29T12:36:29.177296 #30978]  INFO -- : [3873c2d4-ae31-4f29-81f3-ec5f1e082735] Started GET "/admins/sign_in" for 133.137.185.128 at 2019-09-29 12:36:29 +0000
+I, [2019-09-29T12:36:29.178030 #30978]  INFO -- : [3873c2d4-ae31-4f29-81f3-ec5f1e082735] Processing by Admins::SessionsController#new as HTML
+I, [2019-09-29T12:36:29.179279 #30978]  INFO -- : [3873c2d4-ae31-4f29-81f3-ec5f1e082735]   Rendering admins/sessions/new.html.erb within layouts/application
+I, [2019-09-29T12:36:29.181162 #30978]  INFO -- : [3873c2d4-ae31-4f29-81f3-ec5f1e082735]   Rendered admins/shared/_links.html.erb (0.2ms)
+I, [2019-09-29T12:36:29.181226 #30978]  INFO -- : [3873c2d4-ae31-4f29-81f3-ec5f1e082735]   Rendered admins/sessions/new.html.erb within layouts/application (1.9ms)
+I, [2019-09-29T12:36:29.181691 #30978]  INFO -- : [3873c2d4-ae31-4f29-81f3-ec5f1e082735] Completed 200 OK in 4ms (Views: 2.7ms)
+I, [2019-09-29T12:36:36.966205 #30978]  INFO -- : [efb7aca5-3a9d-49a2-b50f-16c54b741721] Started GET "/admins/sign_up" for 133.137.185.128 at 2019-09-29 12:36:36 +0000
+I, [2019-09-29T12:36:36.966878 #30978]  INFO -- : [efb7aca5-3a9d-49a2-b50f-16c54b741721] Processing by Admins::RegistrationsController#new as HTML
+I, [2019-09-29T12:36:36.968043 #30978]  INFO -- : [efb7aca5-3a9d-49a2-b50f-16c54b741721]   Rendering admins/registrations/new.html.erb within layouts/application
+I, [2019-09-29T12:36:36.968430 #30978]  INFO -- : [efb7aca5-3a9d-49a2-b50f-16c54b741721]   Rendered vendor/bundle/ruby/2.5.0/gems/devise-4.7.1/app/views/devise/shared/_error_messages.html.erb (0.0ms)
+I, [2019-09-29T12:36:36.969873 #30978]  INFO -- : [efb7aca5-3a9d-49a2-b50f-16c54b741721]   Rendered admins/shared/_links.html.erb (0.1ms)
+I, [2019-09-29T12:36:36.969931 #30978]  INFO -- : [efb7aca5-3a9d-49a2-b50f-16c54b741721]   Rendered admins/registrations/new.html.erb within layouts/application (1.8ms)
+I, [2019-09-29T12:36:36.970394 #30978]  INFO -- : [efb7aca5-3a9d-49a2-b50f-16c54b741721] Completed 200 OK in 3ms (Views: 2.6ms)
