@@ -18,23 +18,9 @@
             </td>
           </tr>
           <tr>
-            <% if !current_end_user.nil? %>
-            <% if @movie.favorited_by?(current_end_user) %>
-            <td>
-              <%= link_to movie_favorite_path(current_end_user,@movie), method: :delete do %>
-               <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-               <%end%>
-               <%= @movie.favorites.count %> Favorites</td>
-            <% else %>
-            <td>
-              <%= link_to movie_favorites_path(@movie), method: :post do %>
-              <i class="fa fa-heart-o"></i><%end%>
-              <%= @movie.favorites.count %> Favorites</td>
-          <%end%>
-          <%else%>
-          <td>
-             <%= @movie.favorites.count %> Favorites</td>
-          <%end%>
+            <td id="favorite-button">
+            <%= render partial: "favorites/favorite", locals: {movie: @movie} %>
+          </td>
 
             <td>shared by <%= @movie.end_user.first_name+" "+@movie.end_user.last_name %></td>
           </tr>

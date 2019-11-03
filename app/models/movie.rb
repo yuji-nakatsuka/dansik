@@ -11,6 +11,7 @@ class Movie < ApplicationRecord
   def favorited_by?(user)
          favorites.where(end_user_id: user.id).exists?
        end
+   #exists＝データが存在するかどうか
 
   def self.search(search)
     if search
