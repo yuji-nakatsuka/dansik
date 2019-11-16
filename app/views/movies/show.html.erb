@@ -78,6 +78,7 @@
     <div class="movie-youtube col-lg-12 col-md-12">
       <h2>Songs Search from YouTube</h2>
 
+  <%begin%>
     <% @youtube_search_videos.each do |video| %>
       <% video.items.each do |item|%>
         <% snippet = item.snippet %>
@@ -93,6 +94,9 @@
          </div>
       <%end%>
     <%end%>
+  <%rescue%>
+    <p style="color:white">Sorry,We can't use "Search from YouTube" now.<br>本日の検索上限に達しましたので、YouTube検索は現在ご利用頂けません。</p>
+  <%end%>
     </div><!-- movie-youtube -->
 
 

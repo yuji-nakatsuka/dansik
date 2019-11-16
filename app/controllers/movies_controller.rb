@@ -16,7 +16,10 @@ class MoviesController < ApplicationController
         order: :relevance,
         page_token: next_page_token,
       }
+      begin
       service.list_searches(:snippet, opt)
+      rescue
+      end
     end
 
   def index
